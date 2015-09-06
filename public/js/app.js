@@ -9,7 +9,6 @@ var infoWindow = new google.maps.InfoWindow({
     content: "<a>Click to see matching properties.</a>"
 });     
 function cta () {
-    ga('send', 'event','to_cf_click', 'click', $(".mapBoxA").attr('href'));
 }
 function compare(a,b) {
             if(a.count==b.count)
@@ -155,7 +154,6 @@ function initialize() {
             return;
         }
         selectedCityIndex=filtered[0].cityIndex;
-        ga('send', 'event','where_house', 'click', JSON.stringify(filtered));
         $.post( host+"/process", { params: filtered})
           .done(function( data ) {
             //saveUserFilters(filtered);
@@ -273,24 +271,4 @@ function drawCircle(point, radius, dir) {
         }
         return extp;
 }
-/*function openUrl(){
-    var defaultSearchIntent="rent";
-    //var selectedBhk=$('#bhk').multipleSelect('getSelects');
-    //var selectedAptTypes=$('#aptType').multipleSelect('getSelects');
-    var defaultRentParams="";
-    var minRange=$(".minrange").val().toUpperCase();
-    var maxRange=$(".maxrange").val().toUpperCase();
-    var defaultMinValue=getDefaultMinValue($(".search-intent").val(),$(".search-bhk").val());
-    var defaultMaxValue=getDefaultMaxValue($(".search-intent").val(),$(".search-bhk").val());
-    defaultRentParams="&min_inr="+defaultMinValue+"&max_inr="+defaultMaxValue;
-    var defaultBedParams="&bed_rooms="+$(".search-bhk").val();
-    var defaultHouseType="&house_type="+$(".search-apt-type").val();
-
-    var url="";
-    var ne=polygon.getBounds().getNorthEast();
-    var sw=polygon.getBounds().getSouthWest();
-    url+=sw.lat()+","+sw.lng()+","+ne.lat()+","+ne.lng();
-    ga('send', 'event','to_cf_dialog', 'click', url);
-    window.open(url);
-}*/
 google.maps.event.addDomListener(window, 'load', initialize);
