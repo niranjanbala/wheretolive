@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "main": "app.js",
   "scripts": {
-    "start": "node --nouse-idle-notification--expose-gc app.js"
+    "start": "node --nouse-idle-notification --expose-gc app.js"
   },
   "dependencies": {
     "body-parser": "~1.0.0",
